@@ -1,16 +1,35 @@
-# React + Vite
+# Phanendra // Professional Video Editor & Creative Post-Production
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium professional video editing portfolio showcasing short-form virality, high-end commercial concepts, and long-form narrative storytelling.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
+Check out the live portfolio: [https://phanendra275-arch.github.io/EDITOR---Portfolio/](https://phanendra275-arch.github.io/EDITOR---Portfolio/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Features & Workflows
+- **Short-Form Content**: Focused on micro-hooks, high retention pacing, and surgical SFX design.
+- **Long-Form Narrative**: Short films and cinematic storytelling featuring psychological pacing and mental framing.
+- **Commercial & Concept Videos**: Premium brand films and creative direction.
+- **High-Performance Tech Stack**: Built with React, Vite, Tailwind CSS (v4), and Framer Motion for smooth, high-fidelity micro-interactions and transitions.
 
-## React Compiler
+## 📁 Repository Structure
+- `src/components/`: Reusable portfolio layout components (Hero, Navbar, About, Services, Contact, Portfolio showcase).
+- `src/assets/`: Media thumbnails, avatar, background textures, and fonts.
+- `public/`: Statics including `favicon.svg` and `icons.svg`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Local Development
 
-## Expanding the ESLint configuration
+To run this project locally, clone the repository and execute:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+
+# Build production version
+npm run build
+```
+
+## 🌐 Deployment
+This portfolio is deployed automatically using **GitHub Actions**. Any changes pushed to the `main` branch trigger a workflow that builds and publishes the site to GitHub Pages.
