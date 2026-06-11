@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Smartphone, Mic, Film, Palette, Check } from 'lucide-react';
+import GlowCard from './GlowCard';
 
 const services = [
   {
@@ -77,36 +78,38 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
-              className="glass-card p-8 rounded-custom flex flex-col justify-between group cursor-default hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(255,229,0,0.04)]"
+              className="w-full h-full"
             >
-              <div>
-                {/* Icon Container */}
-                <div className="w-12 h-12 rounded-full bg-white/[0.02] border border-white/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/5 group-hover:border-accent/20 transition-all duration-300">
-                  {service.icon}
+              <GlowCard className="p-8 h-full">
+                <div>
+                  {/* Icon Container */}
+                  <div className="w-12 h-12 rounded-full bg-white/[0.02] border border-white/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/5 group-hover:border-accent/20 transition-all duration-300">
+                    {service.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-display text-xl font-bold text-white tracking-wide mb-3 group-hover:text-accent transition-colors duration-300">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm font-body font-light text-text-secondary leading-relaxed mb-6">
+                    {service.description}
+                  </p>
                 </div>
 
-                {/* Title */}
-                <h3 className="font-display text-xl font-bold text-white tracking-wide mb-3 group-hover:text-accent transition-colors duration-300">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm font-body font-light text-text-secondary leading-relaxed mb-6">
-                  {service.description}
-                </p>
-              </div>
-
-              {/* Bullet Features list */}
-              <ul className="border-t border-white/[0.04] pt-5 space-y-2.5">
-                {service.features.map((feature, fIdx) => (
-                  <li key={fIdx} className="flex items-center gap-2.5 text-xs font-semibold text-text-muted group-hover:text-text-secondary transition-colors duration-300">
-                    <span className="flex items-center justify-center w-4 h-4 rounded-full bg-accent/5 border border-accent/15 text-accent shrink-0">
-                      <Check size={9} strokeWidth={3} />
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                {/* Bullet Features list */}
+                <ul className="border-t border-white/[0.04] pt-5 space-y-2.5">
+                  {service.features.map((feature, fIdx) => (
+                    <li key={fIdx} className="flex items-center gap-2.5 text-xs font-semibold text-text-muted group-hover:text-text-secondary transition-colors duration-300">
+                      <span className="flex items-center justify-center w-4 h-4 rounded-full bg-accent/5 border border-accent/15 text-accent shrink-0">
+                        <Check size={9} strokeWidth={3} />
+                      </span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </GlowCard>
             </motion.div>
           ))}
         </div>

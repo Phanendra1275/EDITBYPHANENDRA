@@ -178,7 +178,7 @@ export default function Hero() {
             {[...mockCards, ...mockCards, ...mockCards].map((card, idx) => (
               <div
                 key={`${card.id}-${idx}`}
-                className="relative w-[280px] sm:w-[320px] aspect-[4/3] rounded-xl overflow-hidden border border-white/5 bg-bg-card shadow-lg hover:border-accent/30 transition-all duration-300 group shrink-0"
+                className="relative w-[280px] sm:w-[320px] aspect-[4/3] rounded-custom overflow-hidden border border-white/10 bg-bg-card shadow-lg hover:border-accent/40 hover:shadow-[0_0_20px_rgba(255,229,0,0.15)] transition-all duration-500 ease-out group shrink-0"
               >
                 {/* Card Image */}
                 <img
@@ -202,8 +202,10 @@ export default function Hero() {
         >
           <a
             href="#work"
-            className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full bg-accent text-bg-darkest font-extrabold uppercase text-xs tracking-[0.15em] hover:bg-white transition-all duration-300 shadow-xl shadow-accent/20"
+            className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full bg-accent text-bg-darkest font-extrabold uppercase text-xs tracking-[0.15em] hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl shadow-accent/25"
           >
+            {/* Ambient Pulse Glow behind button */}
+            <div className="absolute inset-0 rounded-full bg-accent/20 blur-md group-hover:bg-accent/45 transition-all duration-300 -z-10 animate-pulse" />
             <Play size={12} className="fill-current" />
             Join / View Work
             <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />

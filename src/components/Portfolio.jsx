@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X, Clock, User } from 'lucide-react';
+import GlowCard from './GlowCard';
 import theDestinyThumbnail from '../assets/the_destiny_thumbnail.jpg';
 import reelsEditingImg from '../assets/reels_editing.png';
 import reelsShowcaseThumbnail from '../assets/reels_showcase_thumbnail.jpg';
@@ -124,44 +125,48 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
                 key={project.id}
-                className="group relative cursor-pointer overflow-hidden rounded-custom border border-white/5 bg-bg-card aspect-video-cinematic"
-                onClick={() => setActiveVideo(project)}
+                className="w-full"
               >
-                {/* Thumbnail Image */}
-                <img 
-                  src={project.thumbnail} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-[0.85] group-hover:brightness-[0.4]"
-                />
+                <GlowCard 
+                  onClick={() => setActiveVideo(project)}
+                  className="aspect-video-cinematic cursor-pointer w-full h-full"
+                >
+                  {/* Thumbnail Image */}
+                  <img 
+                    src={project.thumbnail} 
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-[0.85] group-hover:brightness-[0.4]"
+                  />
 
-                {/* Glassmorphic Play Button Overlay (Visible on Hover) */}
-                <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-t from-black/90 via-black/30 to-black/50">
-                  <div className="flex justify-between items-center w-full transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20">
-                      {project.category}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs text-white/70 font-mono">
-                      <Clock size={12} />
-                      {project.duration}
-                    </span>
-                  </div>
+                  {/* Glassmorphic Play Button Overlay (Visible on Hover) */}
+                  <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-t from-black/90 via-black/30 to-black/50">
+                    <div className="flex justify-between items-center w-full transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20">
+                        {project.category}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-xs text-white/70 font-mono">
+                        <Clock size={12} />
+                        {project.duration}
+                      </span>
+                    </div>
 
-                  {/* Play Icon Center */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-accent text-bg-darkest flex items-center justify-center shadow-lg shadow-accent/35 scale-75 group-hover:scale-100 transition-transform duration-500">
-                    <Play size={20} className="fill-current ml-0.5" />
-                  </div>
+                    {/* Play Icon Center */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-accent text-bg-darkest flex items-center justify-center shadow-lg shadow-accent/35 scale-75 group-hover:scale-100 transition-transform duration-500">
+                      <Play size={20} className="fill-current ml-0.5" />
+                    </div>
 
-                  {/* Text Details Bottom */}
-                  <div className="text-left transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-text-secondary mb-1">
-                      <User size={10} className="text-accent" />
-                      {project.client}
-                    </p>
-                    <h3 className="font-display text-base md:text-lg font-bold text-white leading-tight">
-                      {project.title}
-                    </h3>
+                    {/* Text Details Bottom */}
+                    <div className="text-left transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-text-secondary mb-1">
+                        <User size={10} className="text-accent" />
+                        {project.client}
+                      </p>
+                      <h3 className="font-display text-base md:text-lg font-bold text-white leading-tight">
+                        {project.title}
+                      </h3>
+                    </div>
                   </div>
-                </div>
+                </GlowCard>
               </motion.div>
             ))}
           </AnimatePresence>

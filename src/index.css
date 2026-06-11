@@ -154,4 +154,30 @@
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
+
+  /* Cinematic text shine animation */
+  @keyframes shine {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-shine {
+    background: linear-gradient(
+      90deg,
+      #ffe500 0%,
+      #ffffff 25%,
+      #ffe500 50%,
+      #ffffff 75%,
+      #ffe500 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 4s ease-in-out infinite;
+  }
 }
