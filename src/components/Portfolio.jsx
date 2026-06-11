@@ -4,6 +4,7 @@ import { Play, X, Clock, User } from 'lucide-react';
 import theDestinyThumbnail from '../assets/the_destiny_thumbnail.jpg';
 import reelsEditingImg from '../assets/reels_editing.png';
 import reelsShowcaseThumbnail from '../assets/reels_showcase_thumbnail.jpg';
+import podcastEditingImg from '../assets/podcast_editing.png';
 
 const categories = ['All', 'Short-Form', 'Long-Form'];
 
@@ -19,15 +20,15 @@ const projects = [
   },
   {
     id: 2,
-    title: "Neo-Tokyo 2050 - Brand Film",
+    title: "Viral Retention Reel - Creative Cuts",
     category: "Short-Form",
-    duration: "1:30",
-    thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    client: "Aether Apparel"
+    duration: "0:30",
+    thumbnail: reelsEditingImg,
+    videoUrl: "https://drive.google.com/file/d/1w4R17n3bg6YW-Ry_pTb4veQO8wTLwPxJ/view?usp=sharing",
+    client: "Social Media Campaign"
   },
   {
-    id: 3,
+    id: 4,
     title: "Horror Short Film",
     category: "Long-Form",
     duration: "0:45",
@@ -36,31 +37,13 @@ const projects = [
     client: "Phani / Creator"
   },
   {
-    id: 4,
-    title: "Echoes of Sound - Commercial Concept",
-    category: "Short-Form",
-    duration: "2:15",
-    thumbnail: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-    client: "Sonos Audio Labs"
-  },
-  {
     id: 5,
-    title: "Amelia & Julian - Wedding Highlights",
+    title: "Professional Podcast Showcase",
     category: "Long-Form",
-    duration: "3:40",
-    thumbnail: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    client: "Elegance Weddings"
-  },
-  {
-    id: 6,
-    title: "Decentralizing AI - Documentary Essay",
-    category: "Long-Form",
-    duration: "18:20",
-    thumbnail: "https://images.unsplash.com/photo-1617854818583-09e7f077a156?q=80&w=800&auto=format&fit=crop",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    client: "Tomorrow Media"
+    duration: "14:22",
+    thumbnail: podcastEditingImg,
+    videoUrl: "https://drive.google.com/file/d/13uiFOjNVMj1FXxKoE0y7b3C1GN2skDzm/view?usp=drive_link",
+    client: "Creative Dialogues"
   }
 ];
 
