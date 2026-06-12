@@ -12,7 +12,7 @@ export default function Footer() {
         {/* Left: Copyright */}
         <div className="text-center md:text-left">
           <p className="text-xs font-mono text-text-muted uppercase tracking-wider">
-            &copy; {new Date().getFullYear()} Phanendra. All rights reserved.
+            &copy; {new Date().getFullYear()} Edit By Phanendra. All rights reserved.
           </p>
           <p className="text-[10px] text-text-muted/60 mt-1 uppercase tracking-widest font-sans">
             Creative Post-Production & Video Editing

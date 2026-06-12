@@ -133,7 +133,7 @@ export default function Hero() {
             <img src={phanendraAvatar} alt="Phanendra" className="w-full h-full object-cover" />
           </div>
           <span className="text-[10px] font-bold uppercase tracking-widest text-text-secondary flex items-center gap-1.5">
-            Phanendra <span className="text-accent/60 font-light lowercase">presents</span>
+            Edit By Phanendra <span className="text-accent/60 font-light lowercase">presents</span>
           </span>
         </motion.div>
 

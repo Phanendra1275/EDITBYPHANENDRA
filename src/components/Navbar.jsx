@@ -74,7 +74,7 @@ export default function Navbar() {
               <Clapperboard size={14} className="text-bg-darkest fill-current" />
             </div>
             <span className="font-display font-bold text-lg tracking-wider text-white uppercase group-hover:text-accent transition-colors duration-300">
-              Phanendra
+              Edit By Phanendra
             </span>
           </a>
 
