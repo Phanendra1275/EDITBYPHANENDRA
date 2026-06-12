@@ -212,45 +212,80 @@ export default function About() {
 
               </div>
 
-              {/* DaVinci Resolve-style Color Wheel & Parade Panel */}
-              <div className="w-full mt-6 bg-[#090B10] border border-white/5 rounded-xl p-5 flex flex-col xl:flex-row gap-6 items-center justify-between">
+              {/* DaVinci Resolve-style Color Wheel & Scope Panel */}
+              <div className="w-full mt-5 bg-[#090B10]/95 border border-white/5 rounded-xl p-4 flex flex-col gap-4">
                 
-                {/* Color Wheel */}
-                <div className="flex flex-col items-center gap-2 select-none shrink-0">
-                  <span className="text-[9px] font-mono text-text-secondary uppercase tracking-[0.2em] font-bold">Gamma / Midtones</span>
-                  <div 
-                    ref={wheelRef}
-                    onMouseDown={handleWheelMouseDown}
-                    onTouchStart={handleWheelTouchStart}
-                    className="relative w-24 h-24 rounded-full border border-white/10 bg-[#080A0E] flex items-center justify-center cursor-crosshair select-none overflow-hidden"
-                  >
-                    {/* Conic Color Spectrum Ring */}
-                    <div className="absolute inset-1.5 rounded-full bg-[conic-gradient(from_0deg,#ff4545,#ffdf00,#00ff4c,#00ffff,#3b4eff,#ff00ee,#ff4545)] opacity-40 filter blur-[1px] pointer-events-none" />
-                    <div className="absolute inset-4 rounded-full bg-[#080A0E] border border-white/5 pointer-events-none" />
-                    
-                    {/* Center Crosshair indicator grid */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-                      <div className="w-full h-[1px] bg-white" />
-                      <div className="h-full w-[1px] bg-white" />
+                {/* Top Row: Color Wheel and Calibration Metrics */}
+                <div className="flex flex-row items-center justify-between gap-4 w-full">
+                  
+                  {/* Color Wheel */}
+                  <div className="flex flex-col items-center gap-1.5 select-none shrink-0">
+                    <span className="text-[8px] font-mono text-text-secondary uppercase tracking-widest font-bold">Gamma / Midtones</span>
+                    <div 
+                      ref={wheelRef}
+                      onMouseDown={handleWheelMouseDown}
+                      onTouchStart={handleWheelTouchStart}
+                      className="relative w-24 h-24 rounded-full border border-white/10 bg-[#080A0E] flex items-center justify-center cursor-crosshair select-none overflow-hidden"
+                    >
+                      {/* Conic Color Spectrum Ring */}
+                      <div className="absolute inset-1.5 rounded-full bg-[conic-gradient(from_0deg,#ff4545,#ffdf00,#00ff4c,#00ffff,#3b4eff,#ff00ee,#ff4545)] opacity-40 filter blur-[1px] pointer-events-none" />
+                      <div className="absolute inset-4 rounded-full bg-[#080A0E] border border-white/5 pointer-events-none" />
+                      
+                      {/* Center Crosshair indicator grid */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                        <div className="w-full h-[1px] bg-white" />
+                        <div className="h-full w-[1px] bg-white" />
+                      </div>
+                      
+                      {/* Draggable target selector dot */}
+                      <div 
+                        className={`absolute w-3.5 h-3.5 rounded-full border-2 border-white bg-accent shadow-[0_0_8px_rgba(255,229,0,0.4)] pointer-events-none ${
+                          isGrading ? 'transition-none' : 'transition-all duration-300'
+                        }`}
+                        style={{ 
+                          left: `calc(50% + ${colorPos.x * 48}px - 7px)`, 
+                          top: `calc(50% + ${colorPos.y * 48}px - 7px)` 
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Calibration Metrics */}
+                  <div className="flex-1 flex flex-col gap-2 font-mono">
+                    <div className="flex items-center justify-between text-[10px] select-none">
+                      <span className="text-text-secondary uppercase">Temp</span>
+                      <span className={`font-semibold ${colorPos.x > 0 ? 'text-amber-400' : colorPos.x < 0 ? 'text-cyan-400' : 'text-white'}`}>
+                        {colorPos.x > 0 ? `+${Math.round(colorPos.x * 50)}K` : colorPos.x < 0 ? `-${Math.round(-colorPos.x * 50)}K` : '0K'}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between text-[10px] select-none">
+                      <span className="text-text-secondary uppercase">Tint</span>
+                      <span className={`font-semibold ${colorPos.y > 0 ? 'text-pink-400' : colorPos.y < 0 ? 'text-emerald-400' : 'text-white'}`}>
+                        {colorPos.y > 0 ? `+${Math.round(colorPos.y * 50)}` : colorPos.y < 0 ? `-${Math.round(-colorPos.y * 50)}` : '0'}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between text-[10px] select-none">
+                      <span className="text-text-secondary uppercase">Contrast</span>
+                      <span className="font-semibold text-white">
+                        {(0.90 + Math.sqrt(colorPos.x*colorPos.x + colorPos.y*colorPos.y) * 0.25).toFixed(2)}
+                      </span>
                     </div>
                     
-                    {/* Draggable target selector dot */}
-                    <div 
-                      className={`absolute w-3.5 h-3.5 rounded-full border-2 border-white bg-accent shadow-[0_0_8px_rgba(255,229,0,0.4)] pointer-events-none ${
-                        isGrading ? 'transition-none' : 'transition-all duration-300'
-                      }`}
-                      style={{ 
-                        left: `calc(50% + ${colorPos.x * 48}px - 7px)`, 
-                        top: `calc(50% + ${colorPos.y * 48}px - 7px)` 
-                      }}
-                    />
+                    {/* Reset trigger */}
+                    <button
+                      onClick={() => setColorPos({ x: 0, y: 0 })}
+                      disabled={colorPos.x === 0 && colorPos.y === 0}
+                      className="mt-1 w-full py-1.5 rounded bg-white/5 border border-white/10 hover:border-accent/30 hover:bg-accent/5 hover:text-accent text-[9px] font-mono uppercase tracking-widest text-text-secondary transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+                    >
+                      Reset Color Grade
+                    </button>
                   </div>
                 </div>
 
-                {/* RGB Parade Monitor */}
-                <div className="flex flex-col items-center gap-2 select-none w-full max-w-[200px] shrink-0">
-                  <span className="text-[9px] font-mono text-text-secondary uppercase tracking-[0.2em] font-bold">RGB Parade Monitor</span>
-                  <div className="relative w-full h-24 rounded border border-white/5 bg-[#030406] overflow-hidden flex items-center justify-center p-1 shadow-inner">
+                {/* Bottom Row: RGB Parade Monitor */}
+                <div className="flex flex-col items-center gap-1.5 select-none w-full border-t border-white/5 pt-3">
+                  <span className="text-[8px] font-mono text-text-secondary uppercase tracking-widest font-bold">RGB Parade Monitor</span>
+                  <div className="relative w-full h-20 rounded border border-white/5 bg-[#030406] overflow-hidden flex items-center justify-center p-1 shadow-inner">
                     {/* Scope CRT grid lines */}
                     <div className="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none p-1">
                       <div className="w-full h-[1px] bg-white border-dashed border-b" />
@@ -270,37 +305,7 @@ export default function About() {
                     </svg>
                   </div>
                 </div>
-                
-                {/* Calibration Metrics */}
-                <div className="w-full xl:flex-1 flex flex-col gap-2.5 font-mono">
-                  <div className="flex items-center justify-between text-[10px] select-none">
-                    <span className="text-text-secondary uppercase">Temp</span>
-                    <span className={`font-semibold ${colorPos.x > 0 ? 'text-amber-400' : colorPos.x < 0 ? 'text-cyan-400' : 'text-white'}`}>
-                      {colorPos.x > 0 ? `+${Math.round(colorPos.x * 50)}K` : colorPos.x < 0 ? `-${Math.round(-colorPos.x * 50)}K` : '0K'}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] select-none">
-                    <span className="text-text-secondary uppercase">Tint</span>
-                    <span className={`font-semibold ${colorPos.y > 0 ? 'text-pink-400' : colorPos.y < 0 ? 'text-emerald-400' : 'text-white'}`}>
-                      {colorPos.y > 0 ? `+${Math.round(colorPos.y * 50)}` : colorPos.y < 0 ? `-${Math.round(-colorPos.y * 50)}` : '0'}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] select-none">
-                    <span className="text-text-secondary uppercase">Contrast</span>
-                    <span className="font-semibold text-white">
-                      {(0.90 + Math.sqrt(colorPos.x*colorPos.x + colorPos.y*colorPos.y) * 0.25).toFixed(2)}
-                    </span>
-                  </div>
-                  
-                  {/* Reset trigger */}
-                  <button
-                    onClick={() => setColorPos({ x: 0, y: 0 })}
-                    disabled={colorPos.x === 0 && colorPos.y === 0}
-                    className="mt-1 w-full py-1.5 rounded bg-white/5 border border-white/10 hover:border-accent/30 hover:bg-accent/5 hover:text-accent text-[9px] font-mono uppercase tracking-widest text-text-secondary transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
-                  >
-                    Reset Color Grade
-                  </button>
-                </div>
+
               </div>
 
             </div>
