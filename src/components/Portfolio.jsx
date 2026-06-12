@@ -25,7 +25,7 @@ const projects = [
     category: "Short-Form",
     duration: "0:30",
     thumbnail: reelsEditingImg,
-    videoUrl: "https://drive.google.com/file/d/1w4R17n3bg6YW-Ry_pTb4veQO8wTLwPxJ/view?usp=sharing",
+    videoUrl: "https://drive.google.com/file/d/1L3eAg9fxWGbJCndfVIHacTaRGq1FLYX-/view?usp=drivesdk",
     client: "Social Media Campaign"
   },
   {
