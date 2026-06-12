@@ -17,7 +17,8 @@ const projects = [
     duration: "30:16",
     thumbnail: theDestinyThumbnail,
     videoUrl: "https://youtu.be/r8Oza1rKjhk",
-    client: "Subbu Kamani"
+    client: "Subbu Kamani",
+    aspect: "video"
   },
   {
     id: 2,
@@ -26,7 +27,8 @@ const projects = [
     duration: "0:30",
     thumbnail: reelsEditingImg,
     videoUrl: "https://drive.google.com/file/d/1L3eAg9fxWGbJCndfVIHacTaRGq1FLYX-/view?usp=drivesdk",
-    client: "Social Media Campaign"
+    client: "Social Media Campaign",
+    aspect: "portrait"
   },
   {
     id: 4,
@@ -35,7 +37,8 @@ const projects = [
     duration: "0:45",
     thumbnail: reelsShowcaseThumbnail,
     videoUrl: "https://drive.google.com/file/d/1hnZasw2Qm6A58d-cSBa-7TK7ftCUNAqH/view?usp=drive_link",
-    client: "Phani / Creator"
+    client: "Phani / Creator",
+    aspect: "portrait"
   },
   {
     id: 5,
@@ -44,7 +47,8 @@ const projects = [
     duration: "14:22",
     thumbnail: podcastEditingImg,
     videoUrl: "https://drive.google.com/file/d/13uiFOjNVMj1FXxKoE0y7b3C1GN2skDzm/view?usp=drive_link",
-    client: "Creative Dialogues"
+    client: "Creative Dialogues",
+    aspect: "video"
   }
 ];
 
@@ -185,7 +189,7 @@ export default function Portfolio() {
           >
             {/* Ambient Background Glow behind Modal */}
             <div className={`absolute w-full bg-accent/10 rounded-custom blur-[80px] opacity-60 z-0 pointer-events-none ${
-              activeVideo.category === 'Short-Form' ? 'max-w-[340px] aspect-[9/16]' : 'max-w-4xl aspect-video'
+              activeVideo.aspect === 'portrait' ? 'max-w-[340px] aspect-[9/16]' : 'max-w-4xl aspect-video'
             }`} />
 
             {/* Modal Container */}
@@ -195,7 +199,7 @@ export default function Portfolio() {
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 150 }}
               className={`relative w-full bg-bg-darkest rounded-custom overflow-hidden border border-white/10 shadow-2xl flex flex-col z-10 cursor-default transition-all duration-300 ${
-                activeVideo.category === 'Short-Form' ? 'max-w-[340px] md:max-w-[360px]' : 'max-w-5xl'
+                activeVideo.aspect === 'portrait' ? 'max-w-[340px] md:max-w-[360px]' : 'max-w-5xl'
               }`}
               onClick={(e) => e.stopPropagation()}
             >
@@ -215,7 +219,7 @@ export default function Portfolio() {
 
               {/* Video Player */}
               <div className={`relative bg-black flex items-center justify-center ${
-                activeVideo.category === 'Short-Form' ? 'aspect-[9/16] w-full animate-fadeIn' : 'aspect-video w-full'
+                activeVideo.aspect === 'portrait' ? 'aspect-[9/16] w-full animate-fadeIn' : 'aspect-video w-full'
               }`}>
                 {activeVideo.videoUrl.includes('youtube.com') || activeVideo.videoUrl.includes('youtu.be') ? (
                   <iframe
