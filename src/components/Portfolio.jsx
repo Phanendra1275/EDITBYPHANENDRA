@@ -189,7 +189,7 @@ export default function Portfolio() {
           >
             {/* Ambient Background Glow behind Modal */}
             <div className={`absolute w-full bg-accent/10 rounded-custom blur-[80px] opacity-60 z-0 pointer-events-none ${
-              activeVideo.aspect === 'portrait' ? 'max-w-[340px] aspect-[9/16]' : 'max-w-4xl aspect-video'
+              activeVideo.aspect === 'portrait' ? 'max-w-[290px] aspect-[9/16]' : 'max-w-4xl aspect-video'
             }`} />
 
             {/* Modal Container */}
@@ -199,7 +199,7 @@ export default function Portfolio() {
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 150 }}
               className={`relative w-full bg-bg-darkest rounded-custom overflow-hidden border border-white/10 shadow-2xl flex flex-col z-10 cursor-default transition-all duration-300 ${
-                activeVideo.aspect === 'portrait' ? 'max-w-[340px] md:max-w-[360px]' : 'max-w-5xl'
+                activeVideo.aspect === 'portrait' ? 'max-w-[290px] md:max-w-[320px]' : 'max-w-5xl'
               }`}
               onClick={(e) => e.stopPropagation()}
             >
@@ -218,7 +218,7 @@ export default function Portfolio() {
               </div>
 
               {/* Video Player */}
-              <div className={`relative bg-black flex items-center justify-center ${
+              <div className={`relative bg-black flex items-center justify-center shrink-0 ${
                 activeVideo.aspect === 'portrait' ? 'aspect-[9/16] w-full animate-fadeIn' : 'aspect-video w-full'
               }`}>
                 {activeVideo.videoUrl.includes('youtube.com') || activeVideo.videoUrl.includes('youtu.be') ? (
